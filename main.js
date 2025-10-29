@@ -37,7 +37,12 @@
       selector: '.cms-list',
       modulePath: './modules/cmsTabs.js',
       initFn: 'initCMSTabs'
-    }
+    },
+    logoMarquee: {
+      selector: '.marquee',
+      modulePath: './modules/logoMarquee.js',
+      initFn: 'init'
+}
   };
   
   // ==========================================
