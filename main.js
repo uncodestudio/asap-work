@@ -47,6 +47,11 @@
       selector: '.section_testimonies-1',
       modulePath: './modules/animationTestimonies.js',
       initFn: 'init'
+    },
+    accordion: {
+      selector: '[data-accordion]',
+      modulePath: './modules/accordionAnimation.js',
+      initFn: 'init'
     }
   };
   
