@@ -43,6 +43,18 @@ export function initSliders() {
         480: { gap: '1rem' }
       }
     },
+      'is-slider-4': {
+      type: 'loop',
+      gap: '1.5rem',
+      autoWidth: true,
+      arrows: true,
+      pagination: false,
+      drag: true,
+      breakpoints: {
+        768: { autoWidth: false, perPage: 1 },
+        480: { gap: '1rem' }
+      }
+    },
     'is-logo-left': {
       type: 'loop',
       gap: '1.5rem',

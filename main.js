@@ -42,7 +42,12 @@
       selector: '.marquee',
       modulePath: './modules/logoMarquee.js',
       initFn: 'init'
-}
+    },
+    animationTestimonies: {
+      selector: '.section_testimonies-1',
+      modulePath: './modules/animationTestimonies.js',
+      initFn: 'init'
+    }
   };
   
   // ==========================================
