@@ -55,23 +55,16 @@ export function initSliders() {
         480: { gap: '1rem' }
       }
     },
-    'is-logo-left': {
+        'is-slider-5': {
       type: 'loop',
-      gap: '1.5rem',
+      perPage: 1,
       autoWidth: true,
+      arrows: true,
       pagination: false,
-      arrows: false,
-      autoScroll: { speed: 1, autoStart: true, pauseOnHover: false }
-    },
-    'is-logo-right': {
-      type: 'loop',
-      gap: '1.5rem',
-      autoWidth: true,
-      pagination: false,
-      arrows: false,
-      autoScroll: { speed: -1, autoStart: true, pauseOnHover: false }
+      drag: false
     }
   };
+  
   
   // Auto-detection et init
   let totalInitialized = 0;

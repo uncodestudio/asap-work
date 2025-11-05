@@ -52,6 +52,21 @@
       selector: '[data-accordion]',
       modulePath: './modules/accordionAnimation.js',
       initFn: 'init'
+    },
+    cardScroll: {
+      selector: '.section_card-6',
+      modulePath: './modules/cardScroll.js',
+      initFn: 'init'
+    },
+    typewritingAnimation: {
+      selector: '[data-typewriter-phrase]',
+      modulePath: './modules/typewritingAnimation.js',
+      initFn: 'init'
+    },
+    masonryGrid: {
+      selector: '.testimonies_masonry',
+      modulePath: './modules/masonryGrid.js',
+      initFn: 'init'
     }
   };
   
