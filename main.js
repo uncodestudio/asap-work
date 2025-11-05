@@ -18,21 +18,6 @@
       modulePath: './modules/scrollNav.js',
       initFn: 'initScrollNav'
     },
-    scrollTo: {
-      selector: '.button-form, .fs-radio_field',
-      modulePath: './modules/scrollTo.js',
-      initFn: 'initScrollTo'
-    },
-    counters: {
-      selector: '.counterup',
-      modulePath: './modules/counters.js',
-      initFn: 'initCounters'
-    },
-    svg: {
-      selector: '.svg-code',
-      modulePath: './modules/svg.js',
-      initFn: 'initSVG'
-    },
     cmsTabs: {
       selector: '.cms-list',
       modulePath: './modules/cmsTabs.js',
