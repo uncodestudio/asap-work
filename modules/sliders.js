@@ -31,7 +31,7 @@ export function initSliders() {
         480: { gap: '1rem' }
       }
     },
-      'is-slider-3': {
+    'is-slider-3': {
       type: 'loop',
       gap: '1.5rem',
       autoWidth: true,
@@ -43,7 +43,7 @@ export function initSliders() {
         480: { gap: '1rem' }
       }
     },
-      'is-slider-4': {
+    'is-slider-4': {
       type: 'loop',
       gap: '1.5rem',
       autoWidth: true,
@@ -55,16 +55,51 @@ export function initSliders() {
         480: { gap: '1rem' }
       }
     },
-        'is-slider-5': {
+    'is-slider-5': {
       type: 'loop',
       perPage: 1,
       autoWidth: true,
       arrows: true,
       pagination: false,
       drag: false
-    }
+    },
+    'is-slider-cv': {
+      type: 'slide',
+      gap: '1.5rem',
+      autoWidth: true,
+      arrows: true,
+      pagination: false,
+      drag: true,
+      breakpoints: {
+        768: { autoWidth: false, perPage: 1 },
+        480: { gap: '1rem' }
+      }
+    },
+    'is-slider-entretien': {
+      type: 'slide',
+      gap: '1.5rem',
+      autoWidth: true,
+      arrows: true,
+      pagination: false,
+      drag: true,
+      breakpoints: {
+        768: { autoWidth: false, perPage: 1 },
+        480: { gap: '1rem' }
+      }
+    },$
+    'is-slider-entreprise': {
+      type: 'slide',
+      gap: '1.5rem',
+      autoWidth: true,
+      arrows: true,
+      pagination: false,
+      drag: true,
+      breakpoints: {
+        768: { autoWidth: false, perPage: 1 },
+        480: { gap: '1rem' }
+      }
+    },
   };
-  
   
   // Auto-detection et init
   let totalInitialized = 0;
