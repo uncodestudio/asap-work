@@ -86,7 +86,7 @@ export function initSliders() {
         768: { autoWidth: false, perPage: 1 },
         480: { gap: '1rem' }
       }
-    },$
+    },
     'is-slider-entreprise': {
       type: 'slide',
       gap: '1.5rem',
@@ -98,7 +98,7 @@ export function initSliders() {
         768: { autoWidth: false, perPage: 1 },
         480: { gap: '1rem' }
       }
-    },
+    }
   };
   
   // Auto-detection et init
