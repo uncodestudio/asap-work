@@ -48,6 +48,11 @@
       modulePath: './modules/typewritingAnimation.js',
       initFn: 'init'
     },
+    counterUp: {
+      selector: '.section_chiffres-1',
+      modulePath: './modules/counterUp.js',
+      initFn: 'init'
+    },
     masonryGrid: {
       selector: '.testimonies_masonry',
       modulePath: './modules/masonryGrid.js',
