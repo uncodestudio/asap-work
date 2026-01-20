@@ -1,18 +1,20 @@
-// Module Radio Button Active - Version légère
-// Ajoute .is-active au parent (.radio_field) quand le radio est checked
+// Module Radio Button Active - Version data-attributes
+// Ajoute .is-active au parent quand le radio est checked
 
 export function init() {
-  const radios = document.querySelectorAll('.radio_button')
+  const radios = document.querySelectorAll('[data-radio-button]')
   if (!radios.length) return
 
   function updateActive(radio) {
     // Enlever .is-active de tous les radios du même groupe
-    document.querySelectorAll(`.radio_button[name="${radio.name}"]`).forEach(r => {
-      r.closest('.radio_field')?.classList.remove('is-active')
+    document.querySelectorAll(`[data-radio-button][name="${radio.name}"]`).forEach(r => {
+      const field = r.closest('[data-radio-field]')
+      if (field) field.classList.remove('is-active')
     })
     
     // Ajouter .is-active au parent du radio coché
-    radio.closest('.radio_field')?.classList.add('is-active')
+    const field = radio.closest('[data-radio-field]')
+    if (field) field.classList.add('is-active')
   }
 
   // Init + Events
@@ -23,7 +25,7 @@ export function init() {
 }
 
 export function cleanup() {
-  document.querySelectorAll('.radio_field.is-active').forEach(el => {
+  document.querySelectorAll('[data-radio-field].is-active').forEach(el => {
     el.classList.remove('is-active')
   })
 }
