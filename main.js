@@ -57,6 +57,11 @@
       selector: '.testimonies_masonry',
       modulePath: './modules/masonryGrid.js',
       initFn: 'init'
+    },
+    masonryGrid: {
+      selector: '.radio_field',
+      modulePath: './modules/radioCheck.js',
+      initFn: 'init'
     }
   };
   
