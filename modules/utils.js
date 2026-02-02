@@ -1,13 +1,11 @@
 // modules/utils.js
 
 /**
- * Utilitaires partagés entre modules
+ * Détection mode production
  */
+const isDev = false // En prod, Terser va supprimer tout ce qui dépend de ça
 
-// Détection mode dev/prod
-export const isDev = import.meta.env.DEV
-
-// Logs conditionnels (actifs uniquement en dev)
+// Logs (supprimés automatiquement en prod par Terser)
 export const log = isDev ? console.log.bind(console) : () => {}
 export const warn = isDev ? console.warn.bind(console) : () => {}
 export const error = isDev ? console.error.bind(console) : () => {}
@@ -24,22 +22,18 @@ export function ready(callback) {
 }
 
 /**
- * Debounce function
+ * Debounce
  */
 export function debounce(func, wait = 300) {
   let timeout
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout)
-      func(...args)
-    }
+  return function(...args) {
     clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
+    timeout = setTimeout(() => func(...args), wait)
   }
 }
 
 /**
- * Throttle function
+ * Throttle
  */
 export function throttle(func, limit = 300) {
   let inThrottle

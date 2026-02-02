@@ -15,15 +15,10 @@ export default defineConfig({
     
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes('modules/')) {
-            const match = id.match(/modules\/([^.]+)\.js/)
-            return match ? match[1] : null
-          }
-        },
+        // Bundle tout en un seul fichier
+        inlineDynamicImports: true, // ← CLEF pour tout bundler
         
-        chunkFileNames: '[name].js',
-        entryFileNames: '[name].js',
+        entryFileNames: 'main.js',
         assetFileNames: '[name].[ext]'
       }
     },
@@ -31,7 +26,8 @@ export default defineConfig({
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.warn'] // Supprime les logs
       }
     }
   },
