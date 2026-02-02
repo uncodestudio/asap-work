@@ -1,7 +1,8 @@
+@'
 node_modules/
-*.log
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
 dist/
+.env
+.DS_Store
+package-lock.json
+*.log
+'@ | Out-File -FilePath ".gitignore" -Encoding utf8

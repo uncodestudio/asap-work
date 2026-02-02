@@ -8,60 +8,45 @@
   // CONFIGURATION DÉTECTION
   // ==========================================
   const moduleDetectors = {
-    sliders: {
-      selector: '.splide',
-      modulePath: './modules/sliders.js',
-      initFn: 'initSliders'
-    },
-    scrollNav: {
-      selector: '.bootcamp_snap-scroll, .section_snap-scroll',
-      modulePath: './modules/scrollNav.js',
-      initFn: 'initScrollNav'
-    },
-    cmsTabs: {
-      selector: '.cms-list',
-      modulePath: './modules/cmsTabs.js',
-      initFn: 'initCMSTabs'
+    search: {
+    selector: '#searchInput',
+    modulePath: './modules/searchBar.js',
+    initFn: 'init'
     },
     logoMarquee: {
-      selector: '.marquee',
-      modulePath: './modules/logoMarquee.js',
-      initFn: 'init'
+    selector: '.marquee',
+    modulePath: './modules/logoMarquee.js',
+    initFn: 'init'
     },
-    animationTestimonies: {
-      selector: '.section_testimonies-1',
-      modulePath: './modules/animationTestimonies.js',
-      initFn: 'init'
+   testimoniesVertical: {
+    selector: '.splide-testimonies-vertical',
+    modulePath: './modules/testimoniesVertical.js',
+    initFn: 'init'
     },
-    accordion: {
-      selector: '[data-accordion]',
-      modulePath: './modules/accordionAnimation.js',
-      initFn: 'init'
+  communityCards: {
+    selector: '.layout-community_list-wrapper',
+    modulePath: './modules/communityCards.js',
+    initFn: 'init'
     },
-    cardScroll: {
-      selector: '.section_card-6',
-      modulePath: './modules/cardScroll.js',
-      initFn: 'init'
+  cardStack: {
+    selector: '.card-wrapper_animation',
+    modulePath: './modules/cardStack.js',
+    initFn: 'init'
     },
-    typewritingAnimation: {
-      selector: '[data-typewriter-phrase]',
-      modulePath: './modules/typewritingAnimation.js',
-      initFn: 'init'
+  splideVertical: {
+    selector: '.splide-vertical-infinite',
+    modulePath: './modules/splideVertical.js',
+    initFn: 'init'
     },
-    counterUp: {
-      selector: '.section_chiffres-1',
-      modulePath: './modules/counterUp.js',
-      initFn: 'init'
+  faqAccordion: {
+    selector: '.faq_accordion',
+    modulePath: './modules/faqAccordion.js',
+    initFn: 'init'
     },
-    masonryGrid: {
-      selector: '.testimonies_masonry',
-      modulePath: './modules/masonryGrid.js',
-      initFn: 'init'
-    },
-    masonryGrid: {
-      selector: '.radio_field',
-      modulePath: './modules/radioCheck.js',
-      initFn: 'init'
+  talkAboutCarousel: {
+    selector: '.talk-about_item',
+    modulePath: './modules/talkAboutCarousel.js',
+    initFn: 'init'
     }
   };
   
