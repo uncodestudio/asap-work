@@ -7,27 +7,20 @@ export default defineConfig({
     minify: 'terser',
     sourcemap: false,
     
-    lib: {
-      entry: 'main.js',
-      formats: ['es'],
-      fileName: 'main'
-    },
-    
     rollupOptions: {
+      input: 'main.js',
       output: {
-        // Bundle tout en un seul fichier
-        inlineDynamicImports: true, // ← CLEF pour tout bundler
-        
+        format: 'es',
         entryFileNames: 'main.js',
-        assetFileNames: '[name].[ext]'
+        assetFileNames: '[name].[ext]',
+        inlineDynamicImports: true // ← Bundle TOUT
       }
     },
     
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.warn'] // Supprime les logs
+        drop_debugger: true
       }
     }
   },

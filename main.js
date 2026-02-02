@@ -1,104 +1,70 @@
-// main.js - Lazy Loading Auto-Detection
-(function() {
-  'use strict';
-  
-  console.log('🚀 Initialisation du site...');
-  
-  // ==========================================
-  // CONFIGURATION DÉTECTION
-  // ==========================================
-  const moduleDetectors = {
-    search: {
+// main.js
+import { init as initSearch } from './modules/searchBar.js'
+import { init as initLogoMarquee } from './modules/logoMarquee.js'
+import { init as initTestimoniesVertical } from './modules/testimoniesVertical.js'
+import { init as initCommunityCards } from './modules/communityCards.js'
+import { init as initCardStack } from './modules/cardStack.js'
+import { init as initSplideVertical } from './modules/splideVertical.js'
+import { init as initFaqAccordion } from './modules/faqAccordion.js'
+import { init as initTalkAboutCarousel } from './modules/talkAboutCarousel.js'
+
+console.log('🚀 Initialisation du site...')
+
+const moduleDetectors = {
+  search: {
     selector: '#searchInput',
-    modulePath: './modules/searchBar.js',
-    initFn: 'init'
-    },
-    logoMarquee: {
+    initFn: initSearch
+  },
+  logoMarquee: {
     selector: '.marquee',
-    modulePath: './modules/logoMarquee.js',
-    initFn: 'init'
-    },
-   testimoniesVertical: {
+    initFn: initLogoMarquee
+  },
+  testimoniesVertical: {
     selector: '.splide-testimonies-vertical',
-    modulePath: './modules/testimoniesVertical.js',
-    initFn: 'init'
-    },
+    initFn: initTestimoniesVertical
+  },
   communityCards: {
     selector: '.layout-community_list-wrapper',
-    modulePath: './modules/communityCards.js',
-    initFn: 'init'
-    },
+    initFn: initCommunityCards
+  },
   cardStack: {
     selector: '.card-wrapper_animation',
-    modulePath: './modules/cardStack.js',
-    initFn: 'init'
-    },
+    initFn: initCardStack
+  },
   splideVertical: {
     selector: '.splide-vertical-infinite',
-    modulePath: './modules/splideVertical.js',
-    initFn: 'init'
-    },
+    initFn: initSplideVertical
+  },
   faqAccordion: {
     selector: '.faq_accordion',
-    modulePath: './modules/faqAccordion.js',
-    initFn: 'init'
-    },
+    initFn: initFaqAccordion
+  },
   talkAboutCarousel: {
     selector: '.talk-about_item',
-    modulePath: './modules/talkAboutCarousel.js',
-    initFn: 'init'
-    }
-  };
-  
-  // ==========================================
-  // LAZY LOADING CONDITIONNEL
-  // ==========================================
-  const loadPromises = [];
-  let modulesLoaded = 0;
-  let modulesSkipped = 0;
-  
-  Object.keys(moduleDetectors).forEach(moduleName => {
-    const config = moduleDetectors[moduleName];
-    const elementExists = document.querySelector(config.selector);
-    
-    if (elementExists) {
-      console.log(`📦 Chargement ${moduleName}.js...`);
-      
-      const promise = import(config.modulePath)
-        .then(module => {
-          if (module[config.initFn]) {
-            module[config.initFn]();
-            modulesLoaded++;
-          } else {
-            console.error(`❌ Fonction ${config.initFn} introuvable dans ${moduleName}.js`);
-          }
-        })
-        .catch(error => {
-          console.error(`❌ Erreur chargement ${moduleName}.js:`, error);
-        });
-      
-      loadPromises.push(promise);
-    } else {
-      console.log(`⏭️  Skip ${moduleName}.js (aucun élément "${config.selector}")`);
-      modulesSkipped++;
-    }
-  });
-  
-  // ==========================================
-  // FINALISATION
-  // ==========================================
-  if (loadPromises.length === 0) {
-    console.log('ℹ️  Aucun module nécessaire sur cette page');
-    console.log('✅ Site initialisé !');
-  } else {
-    Promise.all(loadPromises)
-      .then(() => {
-        console.log(`✅ ${modulesLoaded} module(s) chargé(s), ${modulesSkipped} skippé(s)`);
-        console.log('✅ Site initialisé avec succès !');
-      })
-      .catch(error => {
-        console.error('❌ Erreur lors de l\'initialisation:', error);
-      });
+    initFn: initTalkAboutCarousel
   }
+}
+
+let modulesLoaded = 0
+let modulesSkipped = 0
+
+Object.keys(moduleDetectors).forEach((moduleName) => {
+  const config = moduleDetectors[moduleName]
+  const elementExists = document.querySelector(config.selector)
   
-})();
+  if (elementExists) {
+    console.log(`📦 Init ${moduleName}...`)
+    try {
+      config.initFn()
+      modulesLoaded++
+    } catch (error) {
+      console.error(`❌ Erreur ${moduleName}:`, error)
+    }
+  } else {
+    console.log(`⏭️ Skip ${moduleName}`)
+    modulesSkipped++
+  }
+})
+
+console.log(`✅ ${modulesLoaded} module(s) chargé(s), ${modulesSkipped} skippé(s)`)
+console.log('✅ Site initialisé !')
