@@ -1,8 +1,5 @@
-@'
 node_modules/
-dist/
 .env
 .DS_Store
 package-lock.json
 *.log
-'@ | Out-File -FilePath ".gitignore" -Encoding utf8
