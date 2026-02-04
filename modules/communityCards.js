@@ -73,6 +73,8 @@ export function init() {
         onLeave: hideAllItems,
         onEnterBack: revealAllItems,
         onLeaveBack: hideAllItems,
+        markers: true, // ← MARKERS DESKTOP
+        id: `desktop-list-${listIndex + 1}`, // ← Label pour identifier
       })
       
       log(`✅ Desktop trigger créé pour liste ${listIndex + 1}`)
@@ -109,6 +111,8 @@ export function init() {
           onLeave: hideItem,
           onEnterBack: revealItem,
           onLeaveBack: hideItem,
+          markers: true, // ← MARKERS MOBILE
+          id: `mobile-item-${listIndex + 1}-${itemIndex + 1}`, // ← Label
         })
         
         mobileTriggers.push(itemTrigger)
