@@ -3,7 +3,7 @@ import { log, warn, ready } from './utils.js'
 
 export function init() {
   ready(() => {
-    log('🎴 Initialisation Card Stack Animation (GetHyped Real)')
+    log('🎴 Initialisation Card Stack Animation (GetHyped)')
     
     if (typeof ScrollTrigger === 'undefined' || typeof gsap === 'undefined') {
       warn('⚠️ GSAP ou ScrollTrigger pas chargé')
@@ -39,38 +39,46 @@ export function init() {
       // Toutes les cards sauf la dernière
       if (!isLast) {
         
-        // Animation principale : scale + rotation 3D
+        const pinDuration = window.innerHeight
+        
+        // Debug logs
+        log(`Card ${index + 1}:`)
+        log(`  - pinDuration: ${pinDuration}px`)
+        log(`  - fade start: ${pinDuration * 0.75}px (75%)`)
+        log(`  - fade end: ${pinDuration}px (100%)`)
+        
+        // Animation principale : scale + rotation 3D (0% → 100%)
         gsap.to(content, {
-          rotationZ: (Math.random() - 0.5) * 10,  // Rotation aléatoire ±5°
-          scale: 0.7,                              // Scale down à 70%
-          rotationX: 40,                           // Perspective 3D
+          rotationZ: (Math.random() - 0.5) * 10,
+          scale: 0.7,
+          rotationX: 40,
           ease: 'power1.in',
           scrollTrigger: {
-            pin: wrapper,                          // Pin le wrapper
+            pin: wrapper,
             trigger: slide,
             start: 'top top',
-            end: `+=${window.innerHeight}`,        // Pin pendant 1 viewport
+            end: `+=${pinDuration}`,
             scrub: true,
-            // markers: true,
+            markers: true,
+            id: `card-${index + 1}-main`
           }
         })
         
-        // Fade out progressif (75% → 100%)
-        const pinDuration = window.innerHeight
-        
+        // Fade out (75% → 100%)
         gsap.to(content, {
-          autoAlpha: 0,                            // Fade + visibility
+          autoAlpha: 0,
           ease: 'power1.inOut',
           scrollTrigger: {
             trigger: slide,
             start: `top+=${pinDuration * 0.75} top`,
             end: `top+=${pinDuration} top`,
             scrub: true,
-            // markers: true,
+            markers: true,
+            id: `card-${index + 1}-fade`
           }
         })
         
-        log(`📌 Slide ${index + 1} configurée`)
+        log(`✅ Card ${index + 1} configurée`)
       }
     })
     

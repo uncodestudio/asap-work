@@ -73,7 +73,7 @@ export function init() {
         onLeave: hideAllItems,
         onEnterBack: revealAllItems,
         onLeaveBack: hideAllItems,
-        markers: true, // ← MARKERS DESKTOP
+        markers: false, // ← MARKERS DESKTOP
         id: `desktop-list-${listIndex + 1}`, // ← Label pour identifier
       })
       
@@ -111,7 +111,7 @@ export function init() {
           onLeave: hideItem,
           onEnterBack: revealItem,
           onLeaveBack: hideItem,
-          markers: true, // ← MARKERS MOBILE
+          markers: false,
           id: `mobile-item-${listIndex + 1}-${itemIndex + 1}`, // ← Label
         })
         

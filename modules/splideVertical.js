@@ -33,7 +33,7 @@ export function init() {
       gap: '4px',               // Espace entre slides
       arrows: false,             // Pas de flèches
       pagination: false,         // Pas de pagination
-      drag: true,                // Drag activé
+      drag: false,                // Drag activé
       wheel: false,              // Pas de scroll molette
       trimSpace: false,
       waitForTransition: true,
