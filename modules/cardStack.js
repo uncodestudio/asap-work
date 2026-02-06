@@ -26,6 +26,36 @@ export function init() {
     
     log(`🎴 ${slides.length} slides trouvées`)
     
+    // ==========================================
+    // ATTENDRE LE CHARGEMENT DES IMAGES
+    // ==========================================
+    const images = section.querySelectorAll('img')
+    let imagesLoaded = 0
+    const totalImages = images.length
+    
+    function checkImagesLoaded() {
+      imagesLoaded++
+      if (imagesLoaded === totalImages) {
+        log('✅ Toutes les images chargées, refresh ScrollTrigger')
+        ScrollTrigger.refresh()
+      }
+    }
+    
+    // Attacher les listeners sur les images
+    if (totalImages > 0) {
+      images.forEach(img => {
+        if (img.complete) {
+          checkImagesLoaded()
+        } else {
+          img.addEventListener('load', checkImagesLoaded)
+          img.addEventListener('error', checkImagesLoaded)
+        }
+      })
+    }
+    
+    // ==========================================
+    // SETUP ANIMATIONS
+    // ==========================================
     slides.forEach((slide, index) => {
       const isLast = index === slides.length - 1
       const wrapper = slide.querySelector('.card-stack_wrapper')
@@ -41,13 +71,11 @@ export function init() {
         
         const pinDuration = window.innerHeight
         
-        // Debug logs
         log(`Card ${index + 1}:`)
         log(`  - pinDuration: ${pinDuration}px`)
         log(`  - fade start: ${pinDuration * 0.75}px (75%)`)
-        log(`  - fade end: ${pinDuration}px (100%)`)
         
-        // Animation principale : scale + rotation 3D (0% → 100%)
+        // Animation principale : scale + rotation 3D
         gsap.to(content, {
           rotationZ: (Math.random() - 0.5) * 10,
           scale: 0.7,
@@ -60,11 +88,12 @@ export function init() {
             end: `+=${pinDuration}`,
             scrub: true,
             markers: true,
-            id: `card-${index + 1}-main`
+            id: `card-${index + 1}-main`,
+            invalidateOnRefresh: true, // ← Recalcule au refresh
           }
         })
         
-        // Fade out (75% → 100%)
+        // Fade out
         gsap.to(content, {
           autoAlpha: 0,
           ease: 'power1.inOut',
@@ -74,12 +103,36 @@ export function init() {
             end: `top+=${pinDuration} top`,
             scrub: true,
             markers: true,
-            id: `card-${index + 1}-fade`
+            id: `card-${index + 1}-fade`,
+            invalidateOnRefresh: true, // ← Recalcule au refresh
           }
         })
         
         log(`✅ Card ${index + 1} configurée`)
       }
+    })
+    
+    // ==========================================
+    // REFRESH ADDITIONNEL
+    // ==========================================
+    
+    // Refresh après fonts loaded
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        log('✅ Fonts chargées, refresh ScrollTrigger')
+        ScrollTrigger.refresh()
+      })
+    }
+    
+    // Refresh après un délai (fallback)
+    setTimeout(() => {
+      log('✅ Refresh final après délai')
+      ScrollTrigger.refresh()
+    }, 500)
+    
+    // Refresh au resize
+    window.addEventListener('resize', () => {
+      ScrollTrigger.refresh()
     })
     
     log('✅ Card Stack animation initialisée')
