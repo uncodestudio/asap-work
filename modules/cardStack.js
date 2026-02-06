@@ -59,7 +59,7 @@ export function init() {
             start: 'top top',
             end: `+=${pinDuration}`,
             scrub: true,
-            markers: false,
+            markers: true,
             id: `card-${index + 1}-main`
           }
         })
@@ -73,7 +73,7 @@ export function init() {
             start: `top+=${pinDuration * 0.75} top`,
             end: `top+=${pinDuration} top`,
             scrub: true,
-            markers: false,
+            markers: true,
             id: `card-${index + 1}-fade`
           }
         })

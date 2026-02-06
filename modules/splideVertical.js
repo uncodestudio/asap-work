@@ -33,7 +33,7 @@ export function init() {
         gap: '4px',
         arrows: false,
         pagination: false,
-        drag: true,
+        drag: false,
         wheel: false,
         trimSpace: false,
         waitForTransition: true,
