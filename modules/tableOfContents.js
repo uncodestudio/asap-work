@@ -26,7 +26,7 @@ export function init() {
     // Cacher le template, il sert juste de modèle de style
     linkTemplate.style.display = 'none'
 
-    const headings = content.querySelectorAll('h1, h2, h3, h4, h5, h6')
+    const headings = content.querySelectorAll('h2, h3, h4, h5, h6')
 
     if (!headings.length) {
       warn('⚠️ Aucun titre trouvé dans [data-toc="content"]')
