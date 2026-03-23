@@ -7,6 +7,12 @@ import { init as initCardStack } from './modules/cardStack.js'
 import { init as initSplideVertical } from './modules/splideVertical.js'
 import { init as initFaqAccordion } from './modules/faqAccordion.js'
 import { init as initTalkAboutCarousel } from './modules/talkAboutCarousel.js'
+import { init as initBlogCtaInjector } from './modules/blogCtaInjector.js'
+import { init as initCategoriesSlider } from './modules/categoriesSlider.js'
+import { init as initSearchBlog } from './modules/searchBlog.js'
+import { init as initSearchQueryDisplay } from './modules/searchQueryDisplay.js'
+import { init as initSearchModal } from './modules/searchModal.js'
+import { init as initTableOfContents } from './modules/tableOfContents.js'
 
 console.log('🚀 Initialisation du site...')
 
@@ -42,6 +48,30 @@ const moduleDetectors = {
   talkAboutCarousel: {
     selector: '.talk-about_item',
     initFn: initTalkAboutCarousel
+  },
+  blogCtaInjector: {
+    selector: '.all-article_list',
+    initFn: initBlogCtaInjector
+  },
+  categoriesSlider: {
+    selector: '.splide-categories',
+    initFn: initCategoriesSlider
+  },
+  searchBlog: {
+    selector: '#searchBlog',
+    initFn: initSearchBlog
+  },
+  searchQueryDisplay: {
+    selector: '[data-search-query]',
+    initFn: initSearchQueryDisplay
+  },
+  searchModal: {
+    selector: '.blog_search-modal-wrapper',
+    initFn: initSearchModal
+  },
+  tableOfContents: {
+    selector: '[data-toc="list"]',
+    initFn: initTableOfContents
   }
 }
 
