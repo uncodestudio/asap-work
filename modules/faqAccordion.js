@@ -68,13 +68,7 @@ export function init() {
         }
       }
       
-      // Click handler
-      question.style.cursor = 'pointer'
       question.addEventListener('click', toggle)
-      
-      // Accessibilité
-      question.setAttribute('role', 'button')
-      question.setAttribute('tabindex', '0')
       question.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault()

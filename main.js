@@ -13,6 +13,8 @@ import { init as initSearchBlog } from './modules/searchBlog.js'
 import { init as initSearchQueryDisplay } from './modules/searchQueryDisplay.js'
 import { init as initSearchModal } from './modules/searchModal.js'
 import { init as initTableOfContents } from './modules/tableOfContents.js'
+import { init as initFormationNav } from './modules/formationNav.js'
+import { init as initFormationProgram } from './modules/formationProgram.js'
 
 console.log('🚀 Initialisation du site...')
 
@@ -72,6 +74,14 @@ const moduleDetectors = {
   tableOfContents: {
     selector: '[data-toc="list"]',
     initFn: initTableOfContents
+  },
+  formationNav: {
+    selector: '.formation-nav_link',
+    initFn: initFormationNav
+  },
+  formationProgram: {
+    selector: '.formation-program_item',
+    initFn: initFormationProgram
   }
 }
 
